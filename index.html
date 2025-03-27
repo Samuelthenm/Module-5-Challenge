@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Board with Day.js</title>
+
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Include Day.js from CDN in the HEAD -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+</head>
+<body>
+  <h1>Task Board</h1>
+
+  <button id="newTaskBtn">Define New Task</button>
+
+  <div class="board">
+    <!-- Columns for each task state -->
+    <div
+      class="column"
+      id="notYetStarted"
+      ondragover="allowDrop(event)"
+      ondrop="dropTask(event, 'Not Yet Started')"
+    >
+      <h2>Not Yet Started</h2>
+      <div id="notYetStartedTasks"></div>
+    </div>
+
+    <div
+      class="column"
+      id="inProgress"
+      ondragover="allowDrop(event)"
+      ondrop="dropTask(event, 'In Progress')"
+    >
+      <h2>In Progress</h2>
+      <div id="inProgressTasks"></div>
+    </div>
+
+    <div
+      class="column"
+      id="completed"
+      ondragover="allowDrop(event)"
+      ondrop="dropTask(event, 'Completed')"
+    >
+      <h2>Completed</h2>
+      <div id="completedTasks"></div>
+    </div>
+  </div>
+
+  <!-- Modal for creating new task -->
+  <div id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Create a New Task</h2>
+      <label for="taskTitle">Title</label>
+      <input type="text" id="taskTitle" />
+
+      <label for="taskDescription">Description</label>
+      <textarea id="taskDescription"></textarea>
+
+      <label for="taskDeadline">Deadline (YYYY-MM-DD)</label>
+      <input type="date" id="taskDeadline" />
+
+      <button id="saveTaskBtn">Save Task</button>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript file (placed before closing body tag) -->
+  <script src="assets/script.js"></script>
+</body>
+</html>
